@@ -43,7 +43,7 @@ public class MusicOrganizer
      */
     public void listFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)) {
             String filename = files.get(index);
             System.out.println(filename);
         }
@@ -55,7 +55,7 @@ public class MusicOrganizer
      */
     public void removeFile(int index)
     {
-        if(index >= 0 && index < files.size()) {
+        if(validIndex(index)) {
             files.remove(index);
         }
     }
@@ -73,5 +73,19 @@ public class MusicOrganizer
         else {
             System.out.println("[ERROR] Aún no hay elementos en la lista");
         }
+    }
+
+    /**
+     * Método que devuelve un valor booleano para indicar si el parámetro introducido es valido(true) o no(false)
+     */
+    public boolean validIndex(int index)
+    {
+        boolean valorValido = false;
+        if (files.size() != 0) {
+            if (index >= 0 && index < files.size()) {
+                valorValido = true;
+            }
+        }
+        return valorValido;
     }
 }
